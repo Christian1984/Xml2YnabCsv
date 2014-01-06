@@ -10,6 +10,7 @@ Output file will be written in folder csv, calles in.xml.csv
 
 TODOs:
 - implement command line options to open any given xml file (simple)
+- create a parser interface/abstract class, make different classes for individual banks/xml structures (simple)
 - implement a GUI (medium)
 - implement other xml structures (e.g. Sparkasse) (medium)
 
