@@ -5,8 +5,9 @@ This XML parser was written in order to parse xml files from banks into a YNAB c
 The implementation includes:
 - all necessary code to parse Postbank xml files into ynab csv
 
-Input xml-file goes in folder xml, must be calles in.xml
-Output file will be written in folder csv, calles in.xml.csv
+HOW TO USE:
+- Input xml-file goes in folder xml, must be called in.xml
+- Output file will be written in folder csv, called in.xml.csv
 
 TODOs:
 - implement command line options to open any given xml file (simple)
@@ -18,4 +19,4 @@ Feel free to implement the ideas and todos above or add your own two cents.
 Fork it, play with it, modify it and please report bugs! ;-)
 
 Christian H.
-December 2013
+Jan 2014
