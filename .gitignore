@@ -1,5 +1,8 @@
+#folders
 bin
+.settings
 
+#files
 *.xml
 *.csv
 
