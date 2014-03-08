@@ -1,4 +1,4 @@
-package implementation;
+package implementation.utils;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -11,24 +11,25 @@ import org.w3c.dom.Document;
 
 public class FileIO
 {
-    public static Document getXmlDocFromFile(String xmlFileName)
+    public static Document getXmlDocFromFile(String xmlFileName) throws Exception
     {
-        try
-        {
-            File xmlFile = new File("xml\\" + xmlFileName);
+        /*try
+        {*/
+            //File xmlFile = new File("xml\\" + xmlFileName);
+            File xmlFile = new File(xmlFileName);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
             
             return doc;
-        }
+        /*}
         catch (Exception e)
         {
             System.out.println("ERROR: An Error occured opening the xml-document " + xmlFileName + ":\n" + e.toString());
             System.exit(1);
             return null;
-        }
+        }*/
     }
     
     public static boolean writeCsvFile(String fileName, String fileContent)
@@ -39,24 +40,25 @@ public class FileIO
         {
             String fileExtension = "csv";            
 
-            if (createFolder(fileExtension))
-            {
-                out = new PrintWriter(fileExtension + "\\" + fileName + "." + fileExtension);
-                out.print(fileContent);
+            /*if (createFolder(fileExtension))
+            {*/
+                //out = new PrintWriter(fileExtension + "\\" + fileName + "." + fileExtension);
+            out = new PrintWriter(fileName + "." + fileExtension);
+            out.print(fileContent);
 
-                System.out.println("INFO: File " + fileName + ".csv successfully written to HDD!");
-                
-                return true;
-            }
+            System.out.println("INFO: File " + fileName + ".csv successfully written to HDD!");
+            
+            return true;
+            /*}
             else
             {
                 throw new FileSystemException("ERROR: Folder " + fileExtension + " could not be created!");
-            }
+            }*/
             
         }
         catch (Exception ex)
         {
-            System.out.println("ERROR: Could not write the file " + fileName + " to HDD!\n" + ex.toString());
+            System.out.println("ERROR: Could not write the file " + fileName + ".csv to HDD!\n" + ex.toString());
             return false;
         }
         finally

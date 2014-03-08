@@ -1,12 +1,11 @@
-package implementation;
+package implementation.parser;
 
 import java.util.Locale;
+import implementation.utils.*;
 
 public class Ntry
 {
-    private int dateMonth;
-    private int dateDay;
-    private int dateYear;
+    private Date date;
     
     private String creditor;
     private String debitor;
@@ -15,9 +14,9 @@ public class Ntry
     private boolean isOutflow = true;
     
     //constructors
-    public Ntry(String dateString, String debitor, String creditor, String memo, double amount, boolean isOutflow)
+    public Ntry(Date date, String debitor, String creditor, String memo, double amount, boolean isOutflow)
     {
-        dateFromString(dateString);
+        this.date = date;
         this.debitor = rmEscapes(debitor);
         this.creditor = rmEscapes(creditor);
         this.memo = rmEscapes(memo);
@@ -31,40 +30,11 @@ public class Ntry
         return s.replace(',', ' ');
     }
     
-    //output methods
-    private void dateFromString(String s)
-    {
-        try
-        {
-            if (s.length() != 10)
-            {
-                throw new IllegalArgumentException();
-            }
-            
-            //assume that s is formatted as YYYY-MM-DD
-            dateYear = Integer.parseInt(s.substring(0, 4));
-            dateMonth = Integer.parseInt(s.substring(5, 7));
-            dateDay = Integer.parseInt(s.substring(8));
-            
-            if (dateYear < 0 || dateMonth < 0 || dateDay < 0)
-            {
-                throw new IllegalArgumentException();
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println("\nWARNING: Illegal date parsed from xml-File. Setting date to 01/01/1970...");
-            
-            dateMonth = 1;
-            dateDay = 1;
-            dateYear = 1970;
-        }
-    }
-    
+    //output methods    
     private String dateToString()
     {
         //Format to DD/MM/YYYY
-        return String.format("%02d/%02d/%04d", dateDay, dateMonth, dateYear);
+        return String.format("%02d/%02d/%04d", date.getDay(), date.getMonth(), date.getYear());
     }
     
     private String getFloatString(double f)

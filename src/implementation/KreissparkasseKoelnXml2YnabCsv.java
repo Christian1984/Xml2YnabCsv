@@ -3,17 +3,17 @@ package implementation;
 import implementation.parser.*;
 import implementation.utils.FileIO;
 
-public class PostbankXml2YnabCsv
+public class KreissparkasseKoelnXml2YnabCsv
 {
     public static void main(String[] args)
     {
-        String fileName = "in.xml"; //TODO: repair
+        String fileName = "ksk_1395164906.xml"; //TODO: repair
         System.out.println("\nINFO: Reading xml-document named " + fileName + "!");
         XmlParser xmlParser = null;
         
         try 
         {
-            xmlParser = new PostbankXmlParser(fileName);
+            xmlParser = new KreissparkasseKoelnXmlParser(fileName);
         }
         catch (Exception e)
         {
